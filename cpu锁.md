@@ -12,14 +12,15 @@ grammar_cjkRuby: true
 
 深入其中的源码你会发现，基本通过AbstractQueuedSynchronizer的compareAndSetState方法实现的
 
-![enter description here][3]
+![enter description here][2]
 
 看compareAndSetState方法的实现，是通过sun.misc.Unsafe的compareAndSwapInt来实现，这个方法可以保证原子操作
 
 我们继续深入发现compareAndSwapInt是本地方法，找到对应的c++源码
 
+![enter description here][3]
 
-
+调用的是Atomic的cmpxchg方法
 
 
 # Lock
@@ -42,5 +43,7 @@ XCHG默认带有 lock
 
 > &ensp;&ensp;3.	把写缓冲区中的所有数据刷新到内存中。
 
+
   [1]: ./images/1511939770516.jpg
-  [3]: ./images/1511938828714.jpg
+  [2]: ./images/1511938828714.jpg
+  [3]: ./images/1511947592847.jpg
