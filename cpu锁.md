@@ -28,7 +28,7 @@ grammar_cjkRuby: true
 cmpxchgl前加lock
 ![enter description here][5]
 
-也就是java的锁实现是依赖是cpu的锁
+也就是说java的锁是通过汇编指令lock实现的
 
 # Lock
 > &ensp;&ensp;在早期的单处理系统中，单条指令的操作都可以认为是原子的，但在多处理系统中，情况就不一样了，即使单条指令的操作可能也会被干扰，所以出现了Lock指令，lock指令的作用就是保证当前指令的原子性.
