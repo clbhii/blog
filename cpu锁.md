@@ -1,5 +1,5 @@
 ---
-title: cpu锁
+title: java锁机制简述
 tags: cpu,lock
 grammar_cjkRuby: true
 ---
@@ -24,3 +24,5 @@ grammar_cjkRuby: true
 
   [1]: ./images/1511938607669.jpg
   [2]: ./images/1511938828714.jpg
+  
+  原子访问是sun.misc.Unsafe被广泛应用的特性之一
