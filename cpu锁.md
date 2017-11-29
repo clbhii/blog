@@ -21,7 +21,11 @@ grammar_cjkRuby: true
 ![enter description here][3]
 
 调用的是Atomic的cmpxchg方法
+这个类的实现是跟操作系统有关，我们选择x86的
+![enter description here][4]
 
+发现cmpxchg方法内部嵌入了汇编指令，通过LOCK_IF_MP来判断是否在
+cmpxchgl前加lock
 
 # Lock
 > &ensp;&ensp;在早期的单处理系统中，单条指令的操作都可以认为是原子的，但在多处理系统中，情况就不一样了，即使单条指令的操作可能也会被干扰，所以出现了Lock指令，lock指令的作用就是保证当前指令的原子性.
@@ -47,3 +51,4 @@ XCHG默认带有 lock
   [1]: ./images/1511939770516.jpg
   [2]: ./images/1511938828714.jpg
   [3]: ./images/1511947592847.jpg
+  [4]: ./images/1511947987350.jpg
