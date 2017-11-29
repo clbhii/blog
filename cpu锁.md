@@ -1,6 +1,6 @@
 ---
 title: java锁机制简述
-tags: cpu,lock
+tags: lock
 grammar_cjkRuby: true
 ---
 
