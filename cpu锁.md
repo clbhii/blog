@@ -42,21 +42,5 @@ XCHG默认能带有 lock
 
 > &ensp;&ensp;3.	把写缓冲区中的所有数据刷新到内存中。
 
-
-
-
-
-  
-  Atomically sets synchronization state to the given updated
-     * value if the current state value equals the expected value.
-     * This operation has memory semantics of a {@code volatile} read
-     * and write.
-
-
-  原子访问是sun.misc.Unsafe被广泛应用的特性之一
-  
-  
-
-
   [1]: ./images/1511939770516.jpg
   [3]: ./images/1511938828714.jpg
