@@ -26,6 +26,7 @@ grammar_cjkRuby: true
 
 发现cmpxchg方法内部嵌入了汇编指令，通过LOCK_IF_MP来判断是否在
 cmpxchgl前加lock
+![enter description here][5]
 
 # Lock
 > &ensp;&ensp;在早期的单处理系统中，单条指令的操作都可以认为是原子的，但在多处理系统中，情况就不一样了，即使单条指令的操作可能也会被干扰，所以出现了Lock指令，lock指令的作用就是保证当前指令的原子性.
@@ -52,3 +53,4 @@ XCHG默认带有 lock
   [2]: ./images/1511938828714.jpg
   [3]: ./images/1511947592847.jpg
   [4]: ./images/1511947987350.jpg
+  [5]: ./images/1511948451482.jpg
