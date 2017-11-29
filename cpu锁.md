@@ -5,14 +5,17 @@ grammar_cjkRuby: true
 ---
 
 # 简述
-很多同学应该在开发中，经常会用到java的锁，多线程开发中，会用到同步队列，但很多同学不知道为什么这些锁类能保证共享资源的安全性。
+在多线程开发中，我们经常会用到java锁，接下来做一下简单的介绍
+我们知道java的并发包有很多锁，如下图
+
 ![enter description here][1]
-上面这些就是我们java中常见的锁类
+
 深入其中的源码你会发现，基本通过AbstractQueuedSynchronizer的compareAndSetState方法实现的
 
 ![enter description here][3]
 
-看compareAndSetState方法的实现，是通过sun.misc.Unsafe的compareAndSwapInt来实现，这个方法可以保证原则操作
+看compareAndSetState方法的实现，是通过sun.misc.Unsafe的compareAndSwapInt来实现，这个方法可以保证原子操作
+
 我们继续深入发现compareAndSwapInt是本地方法，找到对应的c++源码
 
 
@@ -42,7 +45,7 @@ XCHG默认能带有 lock
 
 
 
-  java中很多的锁类都是通过AbstractQueuedSynchronizer的compareAndSetState方法实现的
+
   
   Atomically sets synchronization state to the given updated
      * value if the current state value equals the expected value.
