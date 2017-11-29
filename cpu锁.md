@@ -30,8 +30,8 @@ grammar_cjkRuby: true
 
 
 > &ensp;&ensp;能够和lock指令一起使用的指令
-ADD, ADC, AND, BTC, BTR, BTS, CMPXCHG, CMPXCH8B,CMPXCHG16B, DEC, INC, NEG, NOT, OR, SBB, SUB, &ensp;&ensp;XOR, XADD, XCHG
-XCHG默认能带有 lock
+ADD, ADC, AND, BTC, BTR, BTS, CMPXCHG, CMPXCH8B,CMPXCHG16B, DEC, INC, NEG, NOT, OR, SBB, SUB, XOR, XADD, XCHG
+XCHG默认带有 lock
 
 	
 ###  intel的手册对lock前缀的说明如下：
