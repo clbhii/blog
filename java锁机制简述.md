@@ -20,7 +20,7 @@ grammar_cjkRuby: true
 > &ensp;&ensp;3.  更新成功，获取锁
 > &ensp;&ensp;4.  同时这些操作都必须是原子的
 
-> &ensp;&ensp;举个例子，当前stateOffset的值是0，一个线程调用compareAndSetState（0,1）,获取锁，stateOffset的值更新为1，其他线程再调用compareAndSetState（0,1），应该现在stateOffset的值为1，不一致获取锁失败，直到获取锁的线程释放锁，重新置当前stateOffset的值是0。如果同时有多个线程调用compareAndSetState（0,1），因为是原子的，所以也只会有有一个成功。这里的核心关键是这个方法是如何保证原子的？
+> &ensp;&ensp;举个例子，当前stateOffset的值是0，一个线程调用compareAndSetState（0,1）,获取锁，stateOffset的值更新为1，其他线程再调用compareAndSetState（0,1），因为现在stateOffset的值为1，和expect不一致获取锁失败，直到获取锁的线程释放锁，重新置当前stateOffset的值是0。如果同时有多个线程调用compareAndSetState（0,1），因为是原子的，所以也只会有有一个成功。这里的关键是这个方法是如何保证原子的？
 > &ensp;&ensp;继续往下看compareAndSetState方法的实现，是通过sun.misc.Unsafe的compareAndSwapInt来实现，继续深入发现compareAndSwapInt是本地方法，找到对应的c++源码
 
 ![enter description here][3]
