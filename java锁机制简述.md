@@ -32,7 +32,7 @@ grammar_cjkRuby: true
 
 > &ensp;&ensp;发现cmpxchg方法内部嵌入了汇编指令，通过LOCK_IF_MP来判断是否在cmpxchgl前加lock
 
-![enter description here][5]
+![5][5]
 
 > &ensp;&ensp;到这里，我们明白了java的锁是通过汇编指令lock实现的
 
