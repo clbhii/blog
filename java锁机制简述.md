@@ -26,13 +26,11 @@ grammar_cjkRuby: true
 
 ![enter description here][3]
 
-> &ensp;&ensp;调用的是Atomic的cmpxchg方法
-这个类的实现是跟操作系统有关，我们选择x86的
+> &ensp;&ensp;调用的是Atomic的cmpxchg方法，这个类的实现是跟操作系统有关，我们选择x86的
 
 ![enter description here][4]
 
-> &ensp;&ensp;发现cmpxchg方法内部嵌入了汇编指令，通过LOCK_IF_MP来判断是否在
-cmpxchgl前加lock
+> &ensp;&ensp;发现cmpxchg方法内部嵌入了汇编指令，通过LOCK_IF_MP来判断是否在cmpxchgl前加lock
 
 ![enter description here][5]
 
