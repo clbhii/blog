@@ -32,7 +32,7 @@ grammar_cjkRuby: true
 
 > &ensp;&ensp;发现cmpxchg方法内部嵌入了汇编指令，通过LOCK_IF_MP来判断是否在cmpxchgl前加lock
 
-![5][5]
+![enter description here][5]
 
 > &ensp;&ensp;到这里，我们明白了java的锁是通过汇编指令lock实现的
 
@@ -62,4 +62,4 @@ ADD, ADC, AND, BTC, BTR, BTS, CMPXCHG, CMPXCH8B,CMPXCHG16B, DEC, INC, NEG, NOT, 
   [2]: ./images/1511938828714.jpg
   [3]: ./images/1512024013085.jpg
   [4]: ./images/1512024076224.jpg
-  [5]: ./images/1512024107063.jpg
+  [5]: ./images/1512025744542.jpg
