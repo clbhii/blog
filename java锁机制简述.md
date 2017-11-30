@@ -14,10 +14,10 @@ grammar_cjkRuby: true
 
 ![enter description here][2]
 
-获取锁的过程：
-1.比较当前值（stateOffset）和预期值（expect）是否一致
-2.一致的话，用最新值（update）更新
-3.更新成功，同时这些操作都必须是原子的
+看方法注释，我们知道获取锁的方式：
+1. 比较当前值（stateOffset）和预期值（expect）是否一致
+2. 一致的话，用最新值（update）更新
+3. 更新成功，同时这些操作都必须是原子的
 
 
 看compareAndSetState方法的实现，是通过sun.misc.Unsafe的compareAndSwapInt来实现
