@@ -8,11 +8,11 @@ grammar_cjkRuby: true
 > &ensp;&ensp;在多线程开发中，我们经常会用到java锁，接下来做一下简单的介绍
 我们知道java的并发包有很多锁，如下图
 
-![enter description here][1]
+![1][1]
 
 > &ensp;&ensp;深入其中的源码你会发现，基本所有的锁获取都是通过AbstractQueuedSynchronizer的compareAndSetState方法实现的，
 
-![enter description here][2]
+![2][2]
 
 > &ensp;&ensp;看方法注释，我们知道获取锁的方式：
 > &ensp;&ensp;1.  比较当前值（stateOffset）和预期值（expect）是否一致
@@ -24,15 +24,15 @@ grammar_cjkRuby: true
 
 > &ensp;&ensp;继续往下看compareAndSetState方法的实现，是通过sun.misc.Unsafe的compareAndSwapInt来实现，继续深入发现compareAndSwapInt是本地方法，找到对应的c++源码
 
-![enter description here][3]
+![3][3]
 
 > &ensp;&ensp;调用的是Atomic的cmpxchg方法，这个类的实现是跟操作系统有关，我们选择x86的
 
-![enter description here][4]
+![4][4]
 
 > &ensp;&ensp;发现cmpxchg方法内部嵌入了汇编指令，通过LOCK_IF_MP来判断是否在cmpxchgl前加lock
 
-![enter description here][5]
+![5][5]
 
 > &ensp;&ensp;到这里，我们明白了java的锁是通过汇编指令lock实现的
 
