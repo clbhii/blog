@@ -10,9 +10,14 @@ grammar_cjkRuby: true
 
 ![enter description here][1]
 
-深入其中的源码你会发现，基本通过AbstractQueuedSynchronizer的compareAndSetState方法实现的
+深入其中的源码你会发现，基本所有的锁获取都是通过AbstractQueuedSynchronizer的compareAndSetState方法实现的，
 
 ![enter description here][2]
+
+获取锁的过程：
+1.比较当前值（stateOffset）和预期值（expect）是否一致
+2.一致的话，用最新值（update）更新
+3.更新成功，就算是获取锁了
 
 看compareAndSetState方法的实现，是通过sun.misc.Unsafe的compareAndSwapInt来实现，这个方法可以保证原子操作
 
