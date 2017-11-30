@@ -19,7 +19,6 @@ grammar_cjkRuby: true
 2.一致的话，用最新值（update）更新
 3.更新成功，同时这些操作都必须是原子的
 
-这里有个问题， 上面获取锁的操作可能有并发问题，那怎么保证原子性那
 
 看compareAndSetState方法的实现，是通过sun.misc.Unsafe的compareAndSwapInt来实现
 
