@@ -17,9 +17,11 @@ grammar_cjkRuby: true
 获取锁的过程：
 1.比较当前值（stateOffset）和预期值（expect）是否一致
 2.一致的话，用最新值（update）更新
-3.更新成功，就算是获取锁了
+3.更新成功，同时这些操作都必须是原子的
 
-看compareAndSetState方法的实现，是通过sun.misc.Unsafe的compareAndSwapInt来实现，这个方法可以保证原子操作
+这里有个问题， 上面获取锁的操作可能有并发问题，那怎么保证原子性那
+
+看compareAndSetState方法的实现，是通过sun.misc.Unsafe的compareAndSwapInt来实现
 
 我们继续深入发现compareAndSwapInt是本地方法，找到对应的c++源码
 
