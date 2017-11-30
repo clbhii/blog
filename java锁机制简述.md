@@ -18,7 +18,7 @@ grammar_cjkRuby: true
 > &ensp;&ensp;1.  比较当前值（stateOffset）和预期值（expect）是否一致
 > &ensp;&ensp;2.  一致的话，用最新值（update）更新
 > &ensp;&ensp;3.  更新成功，获取锁
-> &ensp;&ensp;4.  同时这些操作都必须是原子的
+> &ensp;&ensp;4.  同时必须是原子的
 
 > &ensp;&ensp;举个例子，当前stateOffset的值是0，一个线程调用compareAndSetState（0,1）,获取锁，stateOffset的值更新为1，其他线程再调用compareAndSetState（0,1），因为现在stateOffset的值为1，和expect不一致获取锁失败，直到获取锁的线程释放锁，重新置当前stateOffset的值是0。如果同时有多个线程调用compareAndSetState（0,1），因为是原子的，所以也只会有有一个成功。这里的关键是这个方法是如何保证原子的？
 
