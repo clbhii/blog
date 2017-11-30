@@ -5,25 +5,24 @@ grammar_cjkRuby: true
 ---
 
 # 简述
-在多线程开发中，我们经常会用到java锁，接下来做一下简单的介绍
+> &ensp;&ensp;在多线程开发中，我们经常会用到java锁，接下来做一下简单的介绍
 我们知道java的并发包有很多锁，如下图
 
 ![enter description here][1]
 
-深入其中的源码你会发现，基本所有的锁获取都是通过AbstractQueuedSynchronizer的compareAndSetState方法实现的，
+> &ensp;&ensp;深入其中的源码你会发现，基本所有的锁获取都是通过AbstractQueuedSynchronizer的compareAndSetState方法实现的，
 
 ![enter description here][2]
 
-看方法注释，我们知道获取锁的方式：
-1.  比较当前值（stateOffset）和预期值（expect）是否一致
-2.  一致的话，用最新值（update）更新
-3.  更新成功，获取锁
-4.  同时这些操作都必须是原子的
+> &ensp;&ensp;看方法注释，我们知道获取锁的方式：
+> &ensp;&ensp;1.  比较当前值（stateOffset）和预期值（expect）是否一致
+> &ensp;&ensp;2.  一致的话，用最新值（update）更新
+> &ensp;&ensp;3.  更新成功，获取锁
+> &ensp;&ensp;4.  同时这些操作都必须是原子的
 
-
-看compareAndSetState方法的实现，是通过sun.misc.Unsafe的compareAndSwapInt来实现
-
-我们继续深入发现compareAndSwapInt是本地方法，找到对应的c++源码
+> &ensp;&ensp;举个例子，当前stateOffset的值是0，一个线程调用compareAndSetState（0,1）,获取锁，stateOffset的值更新为1，其他线程再调用compareAndSetState（0,1），应该现在stateOffset的值为1，不一致获取锁失败，直到获取锁的线程释放锁，重新置当前stateOffset的值是0。如果同时有多个线程调用compareAndSetState（0,1），因为是原子的，所以也只会有有一个成功。这里的核心关键是这个方法是如何保证原子的？
+> &ensp;&ensp;继续往下看
+compareAndSetState方法的实现，是通过sun.misc.Unsafe的compareAndSwapInt来实现，继续深入发现compareAndSwapInt是本地方法，找到对应的c++源码
 
 ![enter description here][3]
 
@@ -35,7 +34,7 @@ grammar_cjkRuby: true
 cmpxchgl前加lock
 ![enter description here][5]
 
-也就是说java的锁是通过汇编指令lock实现的
+到这里，我们明白了java的锁是通过汇编指令lock实现的
 
 # Lock
 > &ensp;&ensp;在早期的单处理系统中，单条指令的操作都可以认为是原子的，但在多处理系统中，情况就不一样了，即使单条指令的操作可能也会被干扰，所以出现了Lock指令，lock指令的作用就是保证当前指令的原子性.
